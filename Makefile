@@ -6,8 +6,11 @@ FLIDE_SRC = $(shell find src -name '*.cpp')
 FLIDE_OBJ = $(FLIDE_SRC:.cpp=.o)
 
 LIBS = sdl2
-CFLAGS = $(shell pkg-config --cflags $(LIBS))
-LDFLAGS = $(shell pkg-config --libs $(LIBS))
+LIBS_CFLAGS = $(shell pkg-config --cflags $(LIBS))
+LIBS_LDFLAGS = $(shell pkg-config --libs $(LIBS))
+
+CFLAGS = $(LIBS_CFLAGS) --std=c++11
+LDFLAGS = $(LIBS_LDFLAGS)
 
 all: flide
 
