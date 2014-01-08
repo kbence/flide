@@ -8,23 +8,23 @@ namespace sdl {
 
 class Window
 {
-	SDL_Window *window;
-	SDL_GLContext context;
-	display::Container *rootContainer;
+    SDL_Window *window;
+    SDL_GLContext context;
+    display::Container *rootContainer;
 
 public:
-	Window();
-	~Window();
+    Window();
+    ~Window();
 
-	void setRoot(display::Container* container);
-	void render();
+    void setRoot(display::Container* container);
+    void render();
 
 private:
-	void createWindow();
-	void createContext();
-	void destroyWindow();
-	void deleteContext();
-	void destroy();
+    void createWindow();
+    void createContext();
+    void destroyWindow();
+    void deleteContext();
+    void destroy();
 };
 
 }

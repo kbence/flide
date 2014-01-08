@@ -5,32 +5,32 @@
 
 int main(int argc, char* argv[])
 {
-	if (SDL_Init(SDL_INIT_VIDEO) < 0) {
-		fprintf(stderr, "SDL_Init failed!");
-		return 1;
-	}
+    if (SDL_Init(SDL_INIT_VIDEO) < 0) {
+        fprintf(stderr, "SDL_Init failed!");
+        return 1;
+    }
 
-	try {
-		bool running = true;
-		sdl::EventDispatcher dispatcher;
-		sdl::Window *window = new sdl::Window();
+    try {
+        bool running = true;
+        sdl::EventDispatcher dispatcher;
+        sdl::Window *window = new sdl::Window();
 
-		dispatcher.addWindowEventListener([&running] (SDL_WindowEvent *event) {
-			if (event->event == SDL_WINDOWEVENT_CLOSE)
-				running = false;
-		});
+        dispatcher.addWindowEventListener([&running] (SDL_WindowEvent *event) {
+            if (event->event == SDL_WINDOWEVENT_CLOSE)
+                running = false;
+        });
 
-		while (running) {
-			dispatcher.dispatchEvents();
-		}
+        while (running) {
+            dispatcher.dispatchEvents();
+        }
 
-		delete window;
-	} catch (const char* error) {
-		fprintf(stderr, "%s\n", error);
-		return 1;
-	}
+        delete window;
+    } catch (const char* error) {
+        fprintf(stderr, "%s\n", error);
+        return 1;
+    }
 
-	SDL_Quit();
+    SDL_Quit();
 
-	return 0;
+    return 0;
 }

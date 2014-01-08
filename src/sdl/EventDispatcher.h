@@ -11,17 +11,17 @@ namespace sdl
 class EventDispatcher
 {
 public:
-	typedef std::function<void (SDL_WindowEvent*)> WindowEventListener;
+    typedef std::function<void (SDL_WindowEvent*)> WindowEventListener;
 
 private:
-	std::vector<WindowEventListener> windowEventListeners;
+    std::vector<WindowEventListener> windowEventListeners;
 
 public:
-	void addWindowEventListener(WindowEventListener listener);
-	void dispatchEvents();
+    void addWindowEventListener(WindowEventListener listener);
+    void dispatchEvents();
 
 private:
-	void dispatchWindowEvent(SDL_WindowEvent* event);
+    void dispatchWindowEvent(SDL_WindowEvent* event);
 };
 
 }
