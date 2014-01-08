@@ -4,7 +4,9 @@ namespace sdl
 {
 
 Window::Window():
-	window(nullptr), context(nullptr)
+	window(nullptr),
+	context(nullptr),
+	rootContainer(nullptr)
 {
 	createWindow();
 	createContext();
@@ -13,6 +15,17 @@ Window::Window():
 Window::~Window()
 {
 	destroy();
+}
+
+void Window::setRoot(display::Container *container)
+{
+	rootContainer = container;
+}
+
+void Window::render()
+{
+	if (rootContainer)
+		rootContainer->render();
 }
 
 void Window::createWindow()
