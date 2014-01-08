@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <SDL.h>
+#include "sdl/EventDispatcher.h"
 #include "sdl/Window.h"
 
 int main(int argc, char* argv[])
@@ -11,22 +12,16 @@ int main(int argc, char* argv[])
 
 	try {
 		bool running = true;
+		sdl::EventDispatcher dispatcher;
 		sdl::Window *window = new sdl::Window();
 
-		while (running) {
-			SDL_Event event;
+		dispatcher.addWindowEventListener([&running] (SDL_WindowEvent *event) {
+			if (event->event == SDL_WINDOWEVENT_CLOSE)
+				running = false;
+		});
 
-			while (SDL_PollEvent(&event)) {
-				switch (event.type) {
-					case SDL_WINDOWEVENT:
-						switch (event.window.event) {
-							case SDL_WINDOWEVENT_CLOSE:
-								running = false;
-								break;
-						}
-						break;
-				}
-			}
+		while (running) {
+			dispatcher.dispatchEvents();
 		}
 
 		delete window;
