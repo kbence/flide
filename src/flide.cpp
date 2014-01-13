@@ -22,6 +22,7 @@ int main(int argc, char* argv[])
 
         while (running) {
             dispatcher.dispatchEvents();
+            window->render();
         }
 
         delete window;

@@ -24,8 +24,12 @@ void Window::setRoot(display::Container *container)
 
 void Window::render()
 {
+    clear();
+    
     if (rootContainer)
         rootContainer->render();
+
+    SDL_GL_SwapWindow(window);
 }
 
 void Window::createWindow()
@@ -62,6 +66,12 @@ void Window::destroy()
 
     if (window)
         destroyWindow();
+}
+
+void Window::clear()
+{
+    glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+    glClear(GL_COLOR_BUFFER_BIT);
 }
 
 }

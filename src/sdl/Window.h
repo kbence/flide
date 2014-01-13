@@ -1,3 +1,4 @@
+#include <GL/gl.h>
 #include <SDL.h>
 #include "../display/Container.h"
 
@@ -25,6 +26,8 @@ private:
     void destroyWindow();
     void deleteContext();
     void destroy();
+
+    void clear();
 };
 
 }

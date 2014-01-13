@@ -5,7 +5,7 @@ CXX = g++
 FLIDE_SRC = $(shell find src -name '*.cpp')
 FLIDE_OBJ = $(FLIDE_SRC:.cpp=.o)
 
-LIBS = sdl2
+LIBS = sdl2 gl
 LIBS_CFLAGS = $(shell pkg-config --cflags $(LIBS))
 LIBS_LDFLAGS = $(shell pkg-config --libs $(LIBS))
 
